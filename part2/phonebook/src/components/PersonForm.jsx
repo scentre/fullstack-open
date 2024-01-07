@@ -3,11 +3,25 @@ const PersonForm = ({ handleSubmit, setName, setNumber, name, number }) => {
     <form onSubmit={handleSubmit}>
       <p>Phonebook</p>
       <div>
-        name: <input onChange={(e) => setName(e.target.value)} value={name} />
+        name:{" "}
+        <input
+          onChange={(e) => {
+            const trimmed = e.target.value.replace(/\s{2,}$/, "");
+            setName(trimmed);
+          }}
+          value={name}
+        />
       </div>
       <div>
         number:{" "}
-        <input onChange={(e) => setNumber(e.target.value)} value={number} />
+        <input
+          onChange={(e) => {
+            const trimmed = e.target.value.replace(/\s{2,}$/, "");
+
+            setNumber(trimmed);
+          }}
+          value={number}
+        />
       </div>
       <div>
         <button type="submit">add</button>
